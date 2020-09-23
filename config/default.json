@@ -1,5 +1,7 @@
 {
     "MongoURI":"mongodb+srv://trucntt1999:thanhtruc0810@devconnector.fg26x.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwtSecret":"mysecrettoken"
+    "jwtSecret":"mysecrettoken",
+    "githubClientId":"7aa01d4ea85dabc70494",
+    "githubClientSecret":"2fa34b05b370b421df4a26c969957339eeb54aff"
 
 }
