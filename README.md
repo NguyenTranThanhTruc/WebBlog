@@ -1,1 +1,1 @@
-# WebBlog
+jwt expiresIn: 360
