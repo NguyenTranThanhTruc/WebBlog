@@ -116,7 +116,7 @@ router.get('/', async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -138,7 +138,7 @@ router.get('/user/:user_id', auth, async (req, res) => {
         if (err.kind === Object) {
             return res.status(400).json('Profile not found.');
         }
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -157,7 +157,7 @@ router.delete('/', auth, async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -210,7 +210,7 @@ router.put('/experience', auth, [
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -231,7 +231,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -287,7 +287,7 @@ router.put('/education', auth, [
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -308,7 +308,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
@@ -335,7 +335,7 @@ router.get('/github/:username', (req, res) => {
         });
     } catch (err) {
         console.error(err.message);
-        res.status(500).json('Server error');
+        res.status(500).send('Server error');
     }
 })
 
