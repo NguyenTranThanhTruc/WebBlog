@@ -8,7 +8,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 // @route   GET API/auth
-// @desc    Test route
+// @desc    Get user with token
 // @access  Public
 route.get('/', auth, async (req, res) => {
     try {
@@ -38,11 +38,10 @@ route.post('/', [
 
     try {
         // check existed user
-        let user = await User.findOne({ email });
+        let user = await User.findOne(email);
         if (!user) {
             return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
-
         // Matching password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {

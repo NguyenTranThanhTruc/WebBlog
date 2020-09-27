@@ -291,7 +291,7 @@ router.put('/education', auth, [
     }
 })
 
-// @route   DELETE  API/profile/education/exp_id
+// @route   DELETE  API/profile/education/:edu_id
 // @desc    DELETE education
 // @access  Private
 router.delete('/education/:edu_id', auth, async (req, res) => {
