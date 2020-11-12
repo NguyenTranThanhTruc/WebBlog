@@ -1,9 +1,13 @@
 import React, { Fragment, useState } from "react";
-import {Link} from "react-router-dom";
-import {connect} from 'react-redux';
-import {setAlert} from '../../actions/alert';
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 
-const Register = ({setAlert}) => {
+import axios from "axios";
+import PropTypes from "prop-types";
+
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,9 +23,9 @@ const Register = ({setAlert}) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password != password2) {
-      setAlert('Password do not match.', 'danger');
+      setAlert("Password do not match.", "danger");
     } else {
-      console.log("success");
+      register({ name, email, password });
     }
   };
   return (
@@ -39,7 +43,6 @@ const Register = ({setAlert}) => {
               name="name"
               value={name}
               onChange={(e) => onChange(e)}
-              required
             />
           </div>
           <div className="form-group">
@@ -60,7 +63,6 @@ const Register = ({setAlert}) => {
               type="password"
               placeholder="Password"
               name="password"
-              minLength="6"
               value={password}
               onChange={(e) => onChange(e)}
             />
@@ -70,7 +72,6 @@ const Register = ({setAlert}) => {
               type="password"
               placeholder="Confirm Password"
               name="password2"
-              minLength="6"
               value={password2}
               onChange={(e) => onChange(e)}
             />
@@ -85,4 +86,9 @@ const Register = ({setAlert}) => {
   );
 };
 
-export default connect(null,{setAlert})(Register);
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, register })(Register);
